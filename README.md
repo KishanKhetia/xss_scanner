@@ -38,32 +38,60 @@ A powerful and automated **Cross-Site Scripting (XSS) scanner** that detects Ref
 
 ## 🎯 Usage
 
-### Basic XSS Scan
-```bash
-python xss_scanner.py -u "http://example.com" -p "search"
-```
+### Basic Scan
+Scan a target URL for XSS vulnerabilities with default settings.
 
-### Scanning with POST requests
 ```bash
-python xss_scanner.py -u "http://example.com/login" -p "username" "password" -m POST
-```
+python xss_scanner.py -u "http://example.com"
+Scanning with Specific Parameters
+Specify which parameters to test for XSS.
 
-### Enable verbose mode
-```bash
-python xss_scanner.py -u "http://example.com" -p "query" -v
-```
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com/search" -p q
+Choosing HTTP Method
+Specify GET or POST for sending requests.
 
-### Export results to JSON or CSV
-```bash
-python xss_scanner.py -u "http://example.com" -p "query" -o results.json
-python xss_scanner.py -u "http://example.com" -p "query" -o results.csv
-```
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com/login" -p username password -m POST
+Sending Authentication Cookies
+If the target requires authentication, pass session cookies.
 
-### Blind XSS Testing (Using Webhook)
-```bash
-python xss_scanner.py -u "http://example.com" -p "query" -w "https://webhook.site/your-webhook-url"
-```
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com/dashboard" -c "sessionid=abcd1234"
+Defining Data Format (JSON, XML, Query)
+Send payloads in different formats for POST requests.
 
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com/api" -p data -m POST -f json
+Blind XSS Testing via Webhook
+Send payloads to an external webhook for detection.
+
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com/comment" -w "https://your-webhook-url.com"
+Saving Results
+Export scan results in JSON or CSV format.
+
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com" -o results.json
+Enabling Verbose Mode
+Get detailed logs during scanning.
+
+bash
+Copy
+Edit
+python xss_scanner.py -u "http://example.com" -v
 ---
 
 ## 🏗️ Requirements
